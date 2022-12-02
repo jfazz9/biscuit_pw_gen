@@ -51,7 +51,6 @@ class Password_gen:
                 checker.append('lo')
             if a.isdigit() and 'dig' not in checker:
                 checker.append('dig')
-        print(checker)
         if 'sym' or 'up' or 'lo' or 'dig' in checker:
             return True
         else:
@@ -62,11 +61,17 @@ class Password_gen:
 
 
 if __name__=='__main__':
-    new_pass = Password_gen()
-    new_pass.get_symbols()
-    new_pass.adding_uppercase()
-    new_pass.fill_white_space()
-    new_pass.adding_numbers()
-    print('Here is your new password...')
-    print(new_pass.check_strong_password())
+    def generate_password():
+        password = Password_gen()
+        password.adding_numbers()
+        password.adding_uppercase()
+        password.get_symbols()
+        password.fill_white_space()
+        return password
+    #check password is good:
+
+    new_pass = generate_password()
+
+    while new_pass.check_strong_password() != True:
+        new_pass = generate_password()
     print(new_pass.show())
