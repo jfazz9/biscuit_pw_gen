@@ -43,7 +43,7 @@ class Password_gen:
     def check_strong_password(self): #checks if the password meets conditions
         checker = []
         for a in self.biscuit:
-            if a in self.biscuit in all_symbols and 'sym' not in checker:
+            if a in all_symbols and 'sym' not in checker:
                 checker.append('sym')
             if a.upper() and 'up' not in checker:
                 checker.append('up')
@@ -52,7 +52,7 @@ class Password_gen:
             if a.isdigit() and 'dig' not in checker:
                 checker.append('dig')
         print(checker)
-        if ['sym', 'up', 'lo', 'dig'] in checker:
+        if 'sym' or 'up' or 'lo' or 'dig' in checker:
             return True
         else:
             return False
