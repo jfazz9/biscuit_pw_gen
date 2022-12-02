@@ -15,7 +15,6 @@ class Password_gen:
         for a in self.biscuit:
             if a in symbols:
                 self.biscuit = self.biscuit.replace(a, symbols[a])
-        return self.biscuit
 
     def adding_uppercase(self): # swap lowercase for upper randomly
         for a in range(len(self.biscuit)//2):
@@ -24,13 +23,11 @@ class Password_gen:
                 self.biscuit = self.biscuit.replace(self.biscuit[to_be_caps], self.biscuit[to_be_caps].upper())
             except TypeError:
                 continue
-        return self.biscuit
 
     def fill_white_space(self): # using other symbols instead of whitespace
         for a in self.biscuit:
             if a == ' ':
                 self.biscuit = self.biscuit.replace(a, cho(all_symbols))
-        return self.biscuit
 
     def adding_numbers(self): # adding numbers depending on length of current password
         number = ''.join([str((randint(0,9))) for a in range(2)])
@@ -38,7 +35,6 @@ class Password_gen:
             self.biscuit += str(number[0])
         else:
             self.biscuit += str(number)
-        return self.biscuit
 
     def check_strong_password(self): #checks if the password meets conditions
         checker = []
@@ -74,4 +70,4 @@ if __name__=='__main__':
 
     while new_pass.check_strong_password() != True:
         new_pass = generate_password()
-    print(new_pass.show())
+    print(f'Here is your new password >>>: {new_pass.show()}')
