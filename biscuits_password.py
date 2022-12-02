@@ -40,6 +40,23 @@ class Password_gen:
             self.biscuit += str(number)
         return self.biscuit
 
+    def check_strong_password(self): #checks if the password meets conditions
+        checker = []
+        for a in self.biscuit:
+            if a in self.biscuit in all_symbols and 'sym' not in checker:
+                checker.append('sym')
+            if a.upper() and 'up' not in checker:
+                checker.append('up')
+            if a.lower() and 'lo' not in checker:
+                checker.append('lo')
+            if a.isdigit() and 'dig' not in checker:
+                checker.append('dig')
+        print(checker)
+        if ['sym', 'up', 'lo', 'dig'] in checker:
+            return True
+        else:
+            return False
+
     def show(self): # display password, rather than calling attribute
         return self.biscuit
 
@@ -51,4 +68,5 @@ if __name__=='__main__':
     new_pass.fill_white_space()
     new_pass.adding_numbers()
     print('Here is your new password...')
+    print(new_pass.check_strong_password())
     print(new_pass.show())
